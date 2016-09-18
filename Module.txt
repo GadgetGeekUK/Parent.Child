@@ -1,0 +1,12 @@
+﻿Name: Parent.Child
+AntiForgery: enabled
+Author: Mel Shellam
+Website: http://orchardproject.net
+Version: 1.0
+OrchardVersion: 1.10
+FeatureDescription: Shows the creation of shapes from a 3rd party service
+Features:
+    Parent.Child:
+        Description: Display of master-detail style records.
+		Category: Demo
+		Dependencies: Orchard.Autoroute

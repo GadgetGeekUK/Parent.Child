@@ -1,0 +1,16 @@
+﻿@{
+    Model.Metadata.Alternates.Clear();
+    Model.Metadata.Type = "ChildLog_Links";
+
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="@(Model.ActiveTab.Equals("ChildLog") ? "active" : string.Empty)">
+            @Html.ActionLink(T("Child Log").ToString(), "Parent", "Stock", new {parentId = Model.Serial}, null)
+        </li>
+        <li role="presentation"class="">
+            @Html.ActionLink(T("Tab 2").ToString(), string.Empty, string.Empty)
+        </li>
+        <li role="presentation" class="">
+            @Html.ActionLink(T("Tab 3").ToString(), string.Empty, string.Empty)
+        </li>
+    </ul>
+}

@@ -1,0 +1,42 @@
+﻿@{
+    var stockItem = Model.ContentPart;
+}
+@if (Model == null) {
+    @T("No stock item information available...").ToString()
+}
+else {
+    <div class="container">
+        <div class="page-header">
+            <h1>@T("Item:").ToString() @stockItem.Serial</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>@T("Status").ToString()</h2>
+                <div class="media">
+                    <div class="media-left">image</div>
+                    <div class="checkbox disabled media-body">
+                        <label><input type="checkbox"/>@T("In-stock").ToString()</label><br/>
+                        <label><input type="checkbox" />@T("Batteries required").ToString()</label><br/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>@T("Tags").ToString()</h2>
+                <div class="checkbox">
+                    <label for="stolenCheckbox">
+                        <input type="checkbox" id="stolenCheckbox" checked=""/>
+                        @T("Stolen").ToString()
+                    </label>
+                </div>
+                <div class="checkbox disabled">
+                    <label for="outOfServiceCheckbox">
+                        <input type="checkbox" id="outOfServiceCheckbox" disabled=""/>
+                        @T("Out of service").ToString()
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+}

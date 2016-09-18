@@ -1,0 +1,9 @@
+﻿<Placement>
+  <Match ContentType="Parent">
+    <Match DisplayType="Detail">
+      <Place Parts_Parent="Content"/>
+      <Place ChildLog_Links="Content"/>
+      <Place Parts_Parent_Child_List="Content:5"/>
+    </Match>
+  </Match>
+</Placement>

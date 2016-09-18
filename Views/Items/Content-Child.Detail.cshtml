@@ -1,0 +1,12 @@
+﻿@using Orchard.ContentManagement
+@using Parent.Child.Models
+@{
+    ContentItem contentItem = Model.ContentItem;
+    var log = (ChildPart) contentItem.Get(typeof(ChildPart));
+}
+<tr>
+    <td>@log.ChildDateTime.Date.ToString("dd/MMM/yy")</td>
+    <td>@log.ChildDateTime.TimeOfDay.ToString(@"hh\:mm")</td>
+    <td>@(log.Fault ? T("Faulty").ToString() : T("OK").ToString())</td>
+    <td>@log.Description</td>
+</tr>

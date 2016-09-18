@@ -1,0 +1,11 @@
+﻿@using Orchard.ContentManagement
+@using Parent.Child.Models
+@{
+    ContentItem contentItem = Model.ContentItem;
+    var child = (ChildPart) contentItem.Get(typeof (ChildPart));
+}
+<ul>
+    <li>@child.ChildDateTime</li>
+    <li>@(child.Fault ? T("Faulty").ToString() : T("OK").ToString())</li>
+    <li>@child.Description</li>
+</ul>

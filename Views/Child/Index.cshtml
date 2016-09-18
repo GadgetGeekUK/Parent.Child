@@ -1,0 +1,36 @@
+﻿@model Parent.Child.ViewModels.ChildIndexViewModel
+@{
+    Layout.Title = T("Child Log").ToString();
+}
+
+@using (Html.BeginFormAntiForgeryPost()) {
+    @Html.ValidationSummary()
+    if (Model.Logs == null || Model.Logs.Count < 1) {
+        <p>@T("There are no children for this parent.")</p>
+    }
+    else {
+        <fieldset>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">@T("Date")</th>
+                        <th scope="col">@T("Time")</th>
+                        <th scope="col">@T("Log")</th>
+                        <th scope="col">@T("Description")</th>
+                    </tr>
+                    </thead>
+                    @foreach (var entry in Model.Logs) {
+                        <tr>
+                            <td>@entry.ChildDateTime.Date.ToString("dd/MMM/yy")</td>
+                            <td>@entry.ChildDateTime.TimeOfDay.ToString(@"hh\:mm")</td>
+                            <td>@(entry.Fault ? T("Faulty").ToString() : T("OK").ToString())</td>
+                            <td>@entry.Description</td>
+                        </tr>
+                    }
+                </table>
+                @Display(Model.Pager)
+            </div>
+        </fieldset>
+    }
+}

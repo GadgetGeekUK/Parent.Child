@@ -1,0 +1,31 @@
+﻿@using Parent.Child.Models
+@{
+    Style.Include("bootstrap.css", "bootstrap.min.css");
+    var childList = Model.ContentItems;
+    var children = childList.Items;
+}
+
+<div style="padding-top: 30px;">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>@T("Date").ToString()</th>
+                <th>@T("Time").ToString()</th>
+                <th>@T("State").ToString()</th>
+                <th>@T("Description").ToString()</th>
+            </tr>
+            </thead>
+            <tbody>
+            @if (children != null && children.Count < 1) {
+                <tr><td colspan="4">@T("There are no children for this parent.")</td></tr>
+            }
+            else if(children != null) {
+                foreach (var child in children) {
+                    @Display(child)
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
