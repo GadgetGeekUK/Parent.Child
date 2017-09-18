@@ -22,17 +22,20 @@ namespace Parent.Child.Controllers
 
         private readonly ISiteService _siteService;
 
+        private readonly ICustomEventHandler _eventHandler;
+
         protected ILogger Logger { get; set; }
 
         public Localizer T { get; set; }
 
         public dynamic Shape { get; set; }
 
-        public StockController(IShapeFactory shapeFactory, IStockService stockService, IOrchardServices services, ISiteService siteService) {
+        public StockController(IShapeFactory shapeFactory, IStockService stockService, IOrchardServices services, ISiteService siteService, ICustomEventHandler eventHandler) {
             Shape = shapeFactory;
             _stockService = stockService;
             _services = services;
             _siteService = siteService;
+            _eventHandler = eventHandler;
 
             Logger = NullLogger.Instance;
             T = NullLocalizer.Instance;
@@ -49,6 +52,8 @@ namespace Parent.Child.Controllers
             }
 
             dynamic shape = GetStockItemContentShape(stockItem, pagerParameters);
+
+            _eventHandler.SomethingHappened(shape.ContentItem);
 
             return new ShapeResult(this, shape);
         }

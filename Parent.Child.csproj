@@ -25,6 +25,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -86,6 +87,8 @@
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Drivers\ChildPartDriver.cs" />
     <Compile Include="Drivers\ParentPartDriver.cs" />
+    <Compile Include="Handlers\SimpleEventHandler.cs" />
+    <Compile Include="Handlers\BasicEventHandler.cs" />
     <Compile Include="Handlers\ParentPartHandler.cs" />
     <Compile Include="Migrations.cs" />
     <Compile Include="Models\ChildPart.cs" />
@@ -93,6 +96,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routes.cs" />
     <Compile Include="Services\FakeStockService.cs" />
+    <Compile Include="Services\ICustomEventHandler.cs" />
     <Compile Include="Services\IStockService.cs" />
     <Compile Include="ViewModels\ChildIndexViewModel.cs" />
   </ItemGroup>
