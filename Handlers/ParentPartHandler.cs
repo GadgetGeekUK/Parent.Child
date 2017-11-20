@@ -1,4 +1,5 @@
 ﻿using Orchard.ContentManagement.Handlers;
+using Parent.Child.Models;
 using Parent.Child.Services;
 
 namespace Parent.Child.Handlers
@@ -8,11 +9,17 @@ namespace Parent.Child.Handlers
 
         public ParentPartHandler(IStockService service) {
             _service = service;
+
+            OnActivated<ParentPart>(LazyLoadHandlers);
         }
 
         protected override void Loading(LoadContentContext context) {
             base.Loading(context);
             // Can we load the child parts collection here?
+        }
+
+        private void LazyLoadHandlers(ActivatedContentContext context, ParentPart part) {
+            
         }
 
         // How do we use an activating filter here to attach parts to a content type from code

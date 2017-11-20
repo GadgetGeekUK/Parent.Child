@@ -1,9 +1,20 @@
 ﻿using Orchard.ContentManagement;
+using Orchard.ContentManagement.Utilities;
 
 namespace Parent.Child.Models
 {
     public class ParentPart : ContentPart {
-        private Parent _parent;
+        private Parent _parent; // The 3rd party domain object represented by this shape
+
+        #region Trying Lazy Load for Child Part
+        internal LazyField<ChildPart> _childPartField = new LazyField<ChildPart>(); // Ahh...this is for NHibernate
+
+        public ChildPart RelatedChildPart
+        {
+            get { return _childPartField.Value;  }
+            set { _childPartField.Value = value; }
+        }
+        #endregion
 
         public string Serial
         {
@@ -28,6 +39,7 @@ namespace Parent.Child.Models
             _parent = new Parent();
         }
 
+        // Used to hydrate the domain object via the third party service
         public void Populate(Parent parent) {
             _parent = parent;
         }
